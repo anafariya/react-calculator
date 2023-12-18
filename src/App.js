@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles.css"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="calculator-grid">
+      <div className="output">
+        <div className="previous-operand">
+          {formatOperand(previousOperand)} {operation}
+        </div>
+        <div className="current-operand">{formatOperand(currentOperand)}</div>
+      </div>
+      <button
+        className="span-two"
+        onClick={() => dispatch({ type: ACTIONS.CLEAR })}
+      >
+        AC
+      </button>
+      <button onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT })}>
+        DEL
+      </button>
+      <OperationButton operation="÷" dispatch={dispatch} />
+      <DigitButton digit="1" dispatch={dispatch} />
+      <DigitButton digit="2" dispatch={dispatch} />
+      <DigitButton digit="3" dispatch={dispatch} />
+      <OperationButton operation="*" dispatch={dispatch} />
+      <DigitButton digit="4" dispatch={dispatch} />
+      <DigitButton digit="5" dispatch={dispatch} />
+      <DigitButton digit="6" dispatch={dispatch} />
+      <OperationButton operation="+" dispatch={dispatch} />
+      <DigitButton digit="7" dispatch={dispatch} />
+      <DigitButton digit="8" dispatch={dispatch} />
+      <DigitButton digit="9" dispatch={dispatch} />
+      <OperationButton operation="-" dispatch={dispatch} />
+      <DigitButton digit="." dispatch={dispatch} />
+      <DigitButton digit="0" dispatch={dispatch} />
+      <button
+        className="span-two"
+        onClick={() => dispatch({ type: ACTIONS.EVALUATE })}
+      >
+        =
+      </button>
     </div>
   );
 }
